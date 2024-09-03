@@ -1,0 +1,17 @@
+<% layout('layouts/layout') -%>
+<div class="row justify-content-center">
+  <a class="btn btn-primary col-4 mt-3" href="/campgrounds/create">Create</a>
+</div>
+
+<div class="row justify-content-center">    
+  <% for( let i = 0; i < grounds.length; i++ ) { %>    
+<div class="card col-4 p-3 m-3" style="width: 18rem;">
+    <img src="<%=grounds[i].image%>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%=grounds[i].name%></h5>
+      <p class="card-text"><%=grounds[i].discription%></p>
+      <a href="/campgrounds/<%=grounds[i]._id%>" class='btn btn-primary'>Details</a>
+    </div>
+  </div>
+<% } %>
+</div>

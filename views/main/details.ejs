@@ -1,0 +1,18 @@
+<% layout('layouts/layout') -%>
+<div class="container mt-5">
+<div class="row">
+    <img class="col-3 img-fluid" src="<%= ground.image%>" alt="">
+    <div class="card col-8 row justify-content-center">
+    <div class="card-body">
+      <h1 class="card-title"><%= ground.name %></h5>
+      <h2 class="card-subtitle mb-2 text-body-secondary"><%= ground.location%></h6>
+      <p class="card-text"><%= ground.discription%></p>
+    </div></div></div>
+    <div class="row justify-content-center">
+    <a class="btn btn-primary col-3 m-3" href="/campgrounds/<%= ground._id%>/edit">edit</a>
+    <a class="btn btn-primary col-3 m-3" href="/campgrounds">back</a>
+    <form class="col-2 row justify-content-center" action="/campgrounds?_id=<%= ground._id%>&_method=DELETE" method="post">
+        <button class="btn btn-danger col m-3" type="submit">Delete</button>
+    </form></div>
+</div>
+
