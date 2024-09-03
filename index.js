@@ -10,13 +10,13 @@ let uri = process.env.MONGODB_URI
 if (!uri) {
     throw new Error('MONGODB_URI environment variable is not set');
   }
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
 .then(x=>{
     console.log('Connection open')
 });
 
 app.engine('ejs', engine);
-
+mongoose.set('debug', true);
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
