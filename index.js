@@ -4,8 +4,13 @@ const Campground = require('./modals/campground.js')
 const path = require('path')
 const methodOverride = require('method-override')
 const engine = require('ejs-mate')
+require('dotenv').config();
 app = express()
-mongoose.connect('mongodb://127.0.0.1:27017/campgroundDb')
+let uri = process.env.MONGODB_URI
+if (!uri) {
+    throw new Error('MONGODB_URI environment variable is not set');
+  }
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(x=>{
     console.log('Connection open')
 });
