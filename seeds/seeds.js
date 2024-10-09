@@ -14,6 +14,9 @@ let header = {
     "X-Api-Key":'Jf+5XvkLQa0eGk38VQ093g==jDBI0rZj7A36OvG1',
     'Accept': 'image/jpg'}
 }
+let randNum = ()=>{
+    return Math.floor(Math.random()*20)+1
+}
 let randCity = ()=>{
     let rand = Math.floor(Math.random()*1000)
     return `${cities[rand].city}, ${cities[rand].state}`
@@ -34,16 +37,17 @@ const seed = async()=>{
     let data = await axios('https://api.api-ninjas.com/v1/quotes',header)
     list.push({name:randTitle()
         ,location:randCity()
-        ,discription:`${data.data[0].quote}
+        ,description:`${data.data[0].quote}
         ${data.data[0].author}`
         ,price:99
-        ,image:'https://picsum.photos/200/300?random=1'
+        ,image:`https://picsum.photos/200/300?random=${randNum()}`
+        ,reviews:[]
     })
     console.log(list)
     
 
 }
-await Campground.deleteMany({})
+await Campground.deleteMany({name:{$nin : ['FireLink Shrine']}})
 await Campground.insertMany(list)
 }
 seed()

@@ -1,47 +1,62 @@
-<% layout('layouts/layout') -%> 
+<% layout('layouts/layout') -%>
     <h1>New Campground</h1>
-    
-    <div class="form-control">
-        <form class="col row align-items-center ms-3 ps-3 needs-validation" novalidate action="/campgrounds" method = "post">
-                <div class="mb-3 col-4 m-3">
-                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                      </div>
+
+    <div class="form-control row">
+        <form class="col-6 row ps-3 needs-validation offset-3" novalidate action="/campgrounds" method="post">
+            <div class="mb-3 col-4 m-3">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" required>
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
-                <div class="mb-3 col-4 m-3">
-                    <label for="location">Location</label>   
-                    <input type="text" class="form-control" name="location" id="location" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                      </div>
+                <div class="invalid-feedback">
+                    You an Idiot?
                 </div>
-                <div class="mb-3 col-5 m-3">
-                    <label for="Image">Image Url:</label>   
-                    <input type="text" class="form-control" name="imageUrl" id="Image" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                      </div>
+            </div>
+            <div class="mb-3 col-4 m-3">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" name="location" id="location" required>
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
-                <div class="mb-3 col-5 m-3">
-                    <label for="price">Price</label>   
-                    <input type="number" class="form-control" name="price" id="price" min="1" max="99" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                      </div>
+                <div class="invalid-feedback">
+                    You an Idiot?
                 </div>
-                <div class="col-8 row m-3">
-                <label class="col m-3" for="discription">Discription</label>
-            <textarea class="col-11"  name="discription" id="discription" rows="7" cols="40" required>
-            </textarea>
-            <div class="valid-feedback">
-                Looks good!
-              </div>
-        </div>
-        <div class="col-10 row m-3">
-            <button class="btn btn-primary col-3">Submit</button>
-        </div></form>
-        <div class="row"><a class="btn btn-primary m-3 col-4" href="/camprounds">back</a></div>
-        
+            </div>
+            <div class="mb-3 col-4 m-3">
+                <label for="Image">Image Url:</label>
+                <input type="text" class="form-control" name="image" id="Image" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    You an Idiot?
+                </div>
+            </div>
+            <div class="mb-3 col-4 m-3">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" name="price" id="price" min="1" max="99" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    You an Idiot?
+                </div>
+            </div>
+            <div class="col-6 m-3">
+                <label class="m-3" for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="7" cols="60"
+                    required></textarea>
+                <div class="invalid-feedback">
+                    You an Idiot?
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-10 row m-3">
+                <button class="btn btn-primary col-3">Submit</button>
+            </div>
+        </form>
+        <div class="row"><a class="btn btn-primary m-3 col-4" href="/campgrounds">back</a></div>
     </div>

@@ -1,18 +1,65 @@
 <% layout('layouts/layout') -%>
-<div class="container mt-5">
-<div class="row">
-    <img class="col-3 img-fluid" src="<%= ground.image%>" alt="">
-    <div class="card col-8 row justify-content-center">
-    <div class="card-body">
-      <h1 class="card-title"><%= ground.name %></h5>
-      <h2 class="card-subtitle mb-2 text-body-secondary"><%= ground.location%></h6>
-      <p class="card-text"><%= ground.discription%></p>
-    </div></div></div>
-    <div class="row justify-content-center">
-    <a class="btn btn-primary col-3 m-3" href="/campgrounds/<%= ground._id%>/edit">edit</a>
-    <a class="btn btn-primary col-3 m-3" href="/campgrounds">back</a>
-    <form class="col-2 row justify-content-center" action="/campgrounds?_id=<%= ground._id%>&_method=DELETE" method="post">
-        <button class="btn btn-danger col m-3" type="submit">Delete</button>
-    </form></div>
+<div class="container">
+  <div class="row me-2">
+    <div class="col-md-6">
+      <div class="row no-gutters">
+        <div class="col-md-6 p-0 d-flex">
+          <img class="img-fluid w-100" src="<%= ground.image %>" alt="<%= ground.name %>" style="object-fit: cover;">
+        </div>
+        <div class="col-md-6 p-0">
+          <div class="card h-100 border-0 d-flex flex-column">
+            <div class="card-body flex-grow-1">
+              <h1 class="card-title"><%= ground.name %></h1>
+              <h2 class="card-subtitle mb-2 text-muted"><%= ground.location %></h2>
+              <p class="card-text"><%= ground.description %></p>
+            </div>
+            <div class="card-footer mt-auto">
+              <div class="d-flex justify-content-between">
+                <a class="btn btn-primary" href="/campgrounds/<%= ground._id %>/edit">Edit</a>
+                <a class="btn btn-secondary" href="/campgrounds">Back</a>
+                <form action="/campgrounds?_id=<%= ground._id %>&_method=DELETE" method="post">
+                  <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <form class="needs-validation mb-4" action="/campgrounds/<%= ground._id %>/review" method="post" novalidate>
+        <div class="mb-3">
+          <label for="rating">Rate</label>
+          <input id="rating" class="form-control" type="range" max="5" name="rating" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="review">Review</label>
+          <textarea class="form-control" name="review" id="review" rows="5" required></textarea>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="row">
+        <% for(let i = 0; i < ground.reviews.length; i++) { %>
+          <div class="col-12 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rating: <%= ground.reviews[i].rating %></h5>
+                <p class="card-text"><%= ground.reviews[i].review %></p>
+                <form action="/campgrounds/<%= ground._id%>/review?_method=DELETE&_id=<%=ground.reviews[i]._id%>" method="post">
+                  <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
 </div>
 

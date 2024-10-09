@@ -1,0 +1,10 @@
+ <% if (success && success.length == 1) { %>
+<div class=" container alert alert-success alert-dismissible fade show" role="alert">
+     <%=success%> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div><% } %>
+  <% if (danger && danger.length) { %>
+    <div class=" container alert alert-success alert-dismissible fade show" role="alert">
+         <%=danger%> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div><% } %>
