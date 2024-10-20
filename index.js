@@ -8,6 +8,7 @@ const reviewRouter = require('./routes/review.js')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+console.log('hehehehaw')
 app = express()
 mongoose.connect('mongodb://localhost:27017/campgroundDb')
 .then(x=>{
