@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const Campground = require('../modals/campground.js')
 const asyncWrapper = require('../utilities/asyncWraper.js')
+const CustomError = require('../utilities/CustomExpressError.js')
 const {campgroundSchema} = require('../Schemas.js')
 let router = express.Router();
 let validatorMiddleware = (req,res,next)=>{

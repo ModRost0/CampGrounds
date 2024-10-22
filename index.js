@@ -8,9 +8,11 @@ const reviewRouter = require('./routes/review.js')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
-console.log('hehehehaw')
+const dotenv = require('dotenv');
+dotenv.config();
+
 app = express()
-mongoose.connect('mongodb://localhost:27017/campgroundDb')
+mongoose.connect(process.env.MONGO_URI)
 .then(x=>{
     console.log('Connection open')
 });
@@ -25,7 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname,'public')))
 sessionConfig = {
-    secret:'AixenSosuke',
+    secret:'AizenSosuke',
     resave: false,
     saveUninitialized: true,
     cookie:{

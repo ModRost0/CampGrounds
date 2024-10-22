@@ -3,7 +3,9 @@ const cities = require('./cities.js')
 const titles = require('./seedHelpers.js')
 const Campground = require('../modals/campground.js')
 const axios = require('axios')
-mongoose.connect('mongodb://127.0.0.1:27017/campgroundDb')
+const dotenv = require('dotenv');
+dotenv.config();
+mongoose.connect(process.env.MONGO_URI)
 .then(x=>{
     console.log('Connection open')
 });
