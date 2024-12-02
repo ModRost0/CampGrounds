@@ -9,7 +9,7 @@
         <div class="carousel-inner">
           <% ground.image.forEach((img, i) => { %>
             <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-              <img src="<%= img.url %>" class="d-block w-100 rounded" alt="<%= ground.name %> Image">
+              <img src="<%= img.url %>" class="d-block w-100 rounded-3 shadow-sm" alt="<%= ground.name %> Image">
             </div>
           <% }); %>
         </div>
@@ -26,19 +26,19 @@
 
     <!-- Campground Map Section -->
     <div class="col-md-6">
-      <div id="map" class="mb-4" style="height: 400px;"></div> <!-- Map container -->
+      <div id="map" class="mb-4 rounded-3 shadow-sm" style="height: 400px;"></div> <!-- Map container -->
     </div>
   </div>
 
   <!-- Campground Details Section -->
   <div class="row mt-4">
     <div class="col-md-6">
-      <div class="card border-0 shadow-sm">
+      <div class="card border-0 shadow-sm rounded-3">
         <div class="card-body">
-          <h1 class="card-title"><%= ground.name %></h1>
-          <h2 class="card-subtitle mb-2 text-muted"><%= ground.location %></h2>
+          <h1 class="card-title fs-3 fw-bold"><%= ground.name %></h1>
+          <h2 class="card-subtitle mb-2 text-muted fs-5"><%= ground.location %></h2>
           <p class="card-text"><%= ground.description %></p>
-          <p class="card-subtitle text-muted mb-2"><%= ground.price %>$/night</p>
+          <p class="card-subtitle text-muted mb-2 fs-6"><%= ground.price %>$/night</p>
         </div>
         <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
           <a class="btn btn-secondary" href="/campgrounds">Back</a>
@@ -50,7 +50,9 @@
               <button class="btn btn-danger btn-sm" type="submit">Delete</button>
             </form>
           <% } %>
-          
+        </div>
+      </div>
+    </div>
 
     <!-- Review Section -->
     <div class="col-md-6">
@@ -72,7 +74,7 @@
           </fieldset>
 
           <div class="mb-3">
-            <label for="review">Review</label>
+            <label for="review" class="form-label">Review</label>
             <textarea class="form-control" name="review" id="review" rows="4" required></textarea>
           </div>
 
@@ -82,7 +84,7 @@
 
       <!-- Display Reviews -->
       <% ground.reviews.forEach((review, i) => { %>
-        <div class="card mb-3">
+        <div class="card mb-3 shadow-sm rounded-3">
           <div class="card-body">
             <h5 class="card-title">
               <p class="starability-result" data-rating="<%= review.rating %>">Rated: <%= review.rating %> stars</p>
@@ -104,4 +106,5 @@
     const maptilerApiKey = '<%= process.env.MAPTILER_API || "" %>'; 
     const campground = <%- JSON.stringify(ground) %>; 
 </script>
+
 <script src="/javaScripts/showPageMap.js"></script>
