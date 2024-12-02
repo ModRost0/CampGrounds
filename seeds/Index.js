@@ -5,7 +5,7 @@ const Campground = require('../modals/campground.js')
 const axios = require('axios')
 const dotenv = require('dotenv');
 dotenv.config();
-mongoose.connect('mongodb://127.0.0.1:27017/campgroundDb')
+mongoose.connect(process.env.MONGODB_URL)
     .then(x => {
         console.log('Connection open')
     });
@@ -31,14 +31,14 @@ let randTitle = () => {
     return `${titles.descriptors[randD]} ${titles.places[randP]}`
 }
 const randImg = async()=>{
- let data = await axios('https://api.api-ninjas.com/v1/randomimage',header)
+    let data = await axios('https://api.api-ninjas.com/v1/randomimage',header)
  console.log(data)
  return data
 }
 let result;
 const seed = async () => {
 
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 250; i++) {
         let data = await axios('https://api.api-ninjas.com/v1/quotes', header)
         result = randCity()
         list.push({
