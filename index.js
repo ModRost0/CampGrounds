@@ -56,52 +56,32 @@ sessionConfig = {
 }
 app.use(session(sessionConfig))
 app.use(flash())
-app.use(helmet());
-const scriptSrcUrls = [
-    "https://stackpath.bootstrapcdn.com/",
-    "https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js",
-    "https://kit.fontawesome.com/",
-    "https://cdnjs.cloudflare.com/",
-    "https://cdn.jsdelivr.net",
-];
-const styleSrcUrls = [
-    "https://kit-free.fontawesome.com/",
-    "https://stackpath.bootstrapcdn.com/",
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
-    "https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css",
-    "https://fonts.googleapis.com/",
-    "https://use.fontawesome.com/",
-];
-const connectSrcUrls = [
-    "https://api.maptiler.com/maps/dataviz-dark/style.json",
-    "https://api.maptiler.com/tiles/v3/tiles.json",
-    "https://api.maptiler.com/maps/dataviz-dark/sprite@2x.png",
-    "https://api.maptiler.com/maps/bright-v2/style.json",
-    "https://api.maptiler.com/maps/bright-v2/sprite@2x.json",
-    "https://api.maptiler.com/maps/bright-v2/sprite@2x.png",
-];
-app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: [],
-            connectSrc: ["'self'", ...connectSrcUrls],
-            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-            workerSrc: ["'self'", "blob:"],
-            objectSrc: [],
-            imgSrc: [
-                "'self'",
-                "blob:",
-                "data:",
-                "https://res.cloudinary.com/dritmjkxl/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
-                "https://images.unsplash.com/",
-                "https://api.maptiler.com/resources/logo.svg",
-                "https://api.maptiler.com/maps/bright-v2/sprite@2x.png",
-            ],
-            fontSrc: ["'self'"],
-        },
-    })
-);
+// const scriptSrcUrls = [
+//     "https://stackpath.bootstrapcdn.com/",
+//     "https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js",
+//     "https://kit.fontawesome.com/",
+//     "https://cdnjs.cloudflare.com/",
+//     "https://cdn.jsdelivr.net",
+// ];
+// const styleSrcUrls = [
+//     "https://kit-free.fontawesome.com/",
+//     "https://stackpath.bootstrapcdn.com/",
+//     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+//     "https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css",
+//     "https://fonts.googleapis.com/",
+//     "https://use.fontawesome.com/",
+// ];
+// const connectSrcUrls = [
+//     "https://api.maptiler.com/maps/dataviz-dark/style.json",
+//     "https://api.maptiler.com/tiles/v3/tiles.json",
+//     "https://api.maptiler.com/maps/dataviz-dark/sprite@2x.png",
+//     "https://api.maptiler.com/maps/bright-v2/style.json",
+//     "https://api.maptiler.com/maps/bright-v2/sprite@2x.json",
+//     "https://api.maptiler.com/maps/bright-v2/sprite@2x.png",
+// ];
+app.use(helmet({
+    contentSecurityPolicy: false
+}))
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
