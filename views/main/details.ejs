@@ -44,15 +44,13 @@
           <a class="btn btn-secondary" href="/campgrounds">Back</a>
 
           <!-- Show Edit/Delete buttons-->
-          <% if (user && user._id.equals(ground.author._id)) { %>
+          <% if (user && user._id && ground.author && ground.author._id && user._id.equals(ground.author._id)) { %>
             <a class="btn btn-primary" href="/campgrounds/<%= ground._id %>/edit">Edit</a>
             <form action="/campgrounds?_id=<%= ground._id %>&_method=DELETE" method="post" class="d-inline">
               <button class="btn btn-danger btn-sm" type="submit">Delete</button>
             </form>
           <% } %>
-        </div>
-      </div>
-    </div>
+          
 
     <!-- Review Section -->
     <div class="col-md-6">
