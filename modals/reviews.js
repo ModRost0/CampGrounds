@@ -10,7 +10,9 @@ let reviewSchema = new mongoose.Schema({
     review:{
         type:String,
         required:true
-    }
+    },
+    author:{type:mongoose.Schema.Types.ObjectId,
+        ref:'User'}
 })
 let Review = mongoose.model('Review',reviewSchema)
 module.exports = Review;

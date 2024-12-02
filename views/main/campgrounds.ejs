@@ -1,4 +1,6 @@
 <% layout('layouts/layout') -%>
+<div class="m-3" id="map" style=" width: 100%;
+    height: 500px;"></div>
 <div class="row justify-content-center">
   <a class="btn btn-primary col-4 mt-3" href="/campgrounds/create">Create</a>
 </div>
@@ -6,7 +8,7 @@
 <div class="row justify-content-center">    
   <% for( let i = 0; i < grounds.length; i++ ) { %>    
 <div class="card col-4 p-3 m-3" style="width: 18rem;">
-    <img src="<%=grounds[i].image%>" class="card-img-top" alt="...">
+    <img src="<%=grounds[i].image[0] ? grounds[i].image[0].url : 'error'%>" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%=grounds[i].name%></h5>
       <p class="card-text"><%=grounds[i].description%></p>
@@ -15,3 +17,8 @@
   </div>
 <% } %>
 </div>
+<script>
+  const maptilerApiKey = '<%= process.env.MAPTILER_API || "" %>';
+  let campground =<%- JSON.stringify({type:"FeatureCollection",crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },features:grounds}) %>;
+</script>
+<script src="/javaScripts/showClusters.js"></script>
